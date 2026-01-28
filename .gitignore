@@ -1,0 +1,12 @@
+# EMG raw data
+emg_simulation/sEMG Data Folder/
+
+# Large files
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+
+# Build
+build/
