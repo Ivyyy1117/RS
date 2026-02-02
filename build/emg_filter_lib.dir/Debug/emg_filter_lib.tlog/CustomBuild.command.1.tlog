@@ -1,0 +1,10 @@
+^E:\RS\EMG_SIMULATION\CMAKELISTS.TXT
+setlocal
+D:\qt\Tools\CMake_64\bin\cmake.exe -SE:/RS/emg_simulation -BE:/RS/emg_simulation/build --check-stamp-file E:/RS/emg_simulation/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

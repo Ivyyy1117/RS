@@ -1,35 +1,36 @@
 #include "emg_filter.h"
 
 /*
- * 示例：20–450 Hz 带通（fs = 2000 Hz）
- * 由 Python / Matlab 生成
+ * 20-450 Hz Bandpass (fs = 2000 Hz)
+ * Generated via Scipy butter(1, [20, 450], fs=2000, btype='band')
+ * CMSIS-DSP order: {b0, b1, b2, a1, a2}
+ * where y[n] = b0*x[n] + ... + a1*y[n-1] + a2*y[n-2]
  */
 static const float emg_biquad_coeffs[5 * EMG_BIQUAD_SECTIONS] =
 {
-    /* b0, b1, b2, a1, a2 */
-    0.0675f, 0.1349f, 0.0675f,
-   -1.1430f, 0.4128f
+    0.4447994861f, 0.0000000000f, -0.4447994861f, 
+    1.0523515234f, -0.1104010278f
 };
 
-//初始化函数
+// Init function
 void emg_filter_init(emg_filter_t *filt)
 {
-    /* 清状态 */
-    for (uint32_t i = 0; i < 4 * EMG_BIQUAD_SECTIONS; i++)
+    /* Clear state */
+    for (uint32_t i = 0; i < 4; i++)
     {
         filt->state[i] = 0.0f;
     }
 
-    /* 初始化 CMSIS biquad */
+    /* Init CMSIS biquad */
     arm_biquad_cascade_df1_init_f32(
         &filt->biquad,
-        EMG_BIQUAD_SECTIONS,
+        1,
         (float32_t *)emg_biquad_coeffs,
         filt->state
     );
 }
 
-//滤波处理函数
+// Process function
 void emg_filter_process(emg_filter_t *filt,
                         float *input,
                         float *output,
@@ -42,4 +43,3 @@ void emg_filter_process(emg_filter_t *filt,
         block_size
     );
 }
-

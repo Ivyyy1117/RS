@@ -5,10 +5,7 @@
       <FullPath>E:\RS\emg_simulation\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>E:\RS\emg_simulation\build\Debug\emg_sim.exe</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
-      <FullPath>E:\RS\emg_simulation\build\Debug\process_dataset.exe</FullPath>
+      <FullPath>E:\RS\emg_simulation\build\Debug\emg_filter.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>E:\RS\emg_simulation\build\x64\Debug\ALL_BUILD</FullPath>

@@ -1,0 +1,5 @@
+EXPORTS 
+	arm_biquad_cascade_df1_f32
+	arm_biquad_cascade_df1_init_f32
+	emg_filter_init
+	emg_filter_process

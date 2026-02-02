@@ -112,7 +112,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=EMG_Simulation
+CMAKE_PROJECT_NAME:STATIC=emg_simulation
 
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=rc
@@ -193,6 +193,15 @@ EMG_Simulation_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 EMG_Simulation_SOURCE_DIR:STATIC=E:/RS/emg_simulation
+
+//Value Computed by CMake
+emg_simulation_BINARY_DIR:STATIC=E:/RS/emg_simulation/build
+
+//Value Computed by CMake
+emg_simulation_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+emg_simulation_SOURCE_DIR:STATIC=E:/RS/emg_simulation
 
 
 ########################

@@ -1,32 +1,48 @@
-cmake_minimum_required(VERSION 3.10)
-project(EMG_Simulation)
+cmake_minimum_required(VERSION 3.15)
+project(emg_simulation C)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 
-# Include directories
-include_directories(app)
-include_directories(drivers)
+# ====== CMSIS-DSP Path ======
+set(CMSIS_DSP_PATH "E:/RS/CMSIS-DSP-main")
 
-# Main Simulation Sources
-set(SOURCES
-    main.c
-    app/emg_filter.c
-    app/feature_extract.c
-    app/state_machine.c
-    drivers/adc_sim.c
+# ====== Source Files for Executable (Commented out as main.c is missing) ======
+# add_executable(emg_sim
+#     emg_filter.c
+# )
+
+# ====== Shared Library for Python ======
+add_library(emg_filter_lib SHARED
+    emg_filter.c
+)
+set_target_properties(emg_filter_lib PROPERTIES 
+    WINDOWS_EXPORT_ALL_SYMBOLS ON
+    OUTPUT_NAME "emg_filter"
 )
 
-# Main Executable
-add_executable(emg_sim ${SOURCES})
-
-# Tool: Dataset Processor
-add_executable(process_dataset 
-    tools/process_dataset.c
-    app/emg_filter.c
+# ====== Include Directories ======
+include_directories(
+    inc
+    ${CMSIS_DSP_PATH}/Include
+    ${CMSIS_DSP_PATH}/PrivateInclude
 )
 
-# Math library might be needed for standard C math functions
-if(UNIX)
-    target_link_libraries(emg_sim m)
-    target_link_libraries(process_dataset m)
-endif()
+# ====== CMSIS-DSP Sources ======
+# We need to compile these into both the executable and the library
+set(CMSIS_SOURCES
+    ${CMSIS_DSP_PATH}/Source/FilteringFunctions/arm_biquad_cascade_df1_f32.c
+    ${CMSIS_DSP_PATH}/Source/FilteringFunctions/arm_biquad_cascade_df1_init_f32.c
+)
+
+# target_sources(emg_sim PRIVATE ${CMSIS_SOURCES})
+target_sources(emg_filter_lib PRIVATE ${CMSIS_SOURCES})
+
+# ====== Compile Definitions ======
+# target_compile_definitions(emg_sim PRIVATE
+#     ARM_MATH_CM4
+#     __FPU_PRESENT=1
+# )
+target_compile_definitions(emg_filter_lib PRIVATE
+    ARM_MATH_CM4
+    __FPU_PRESENT=1
+)
