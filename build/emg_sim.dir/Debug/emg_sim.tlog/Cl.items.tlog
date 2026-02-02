@@ -1,0 +1,5 @@
+E:\RS\emg_simulation\main.c;E:\RS\emg_simulation\build\emg_sim.dir\Debug\main.obj
+E:\RS\emg_simulation\app\emg_filter.c;E:\RS\emg_simulation\build\emg_sim.dir\Debug\emg_filter.obj
+E:\RS\emg_simulation\app\feature_extract.c;E:\RS\emg_simulation\build\emg_sim.dir\Debug\feature_extract.obj
+E:\RS\emg_simulation\app\state_machine.c;E:\RS\emg_simulation\build\emg_sim.dir\Debug\state_machine.obj
+E:\RS\emg_simulation\drivers\adc_sim.c;E:\RS\emg_simulation\build\emg_sim.dir\Debug\adc_sim.obj

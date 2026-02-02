@@ -1,0 +1,10 @@
+^E:\RS\EMG_SIMULATION\BUILD\CMAKEFILES\EAAC1B8B3505181AC22DCD11C768F29F\GENERATE.STAMP.RULE
+setlocal
+D:\qt\Tools\CMake_64\bin\cmake.exe -SE:/RS/emg_simulation -BE:/RS/emg_simulation/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file E:/RS/emg_simulation/build/EMG_Simulation.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
